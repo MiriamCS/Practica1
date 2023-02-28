@@ -11,32 +11,33 @@ public class CSV {
     public CSV(){
         super();
     }
-    //Leer los datos del fichero
+
     public Table readTable(String nombreFichero) throws FileNotFoundException, IOException {
+        //Leer los datos del fichero
         FileReader file = new FileReader(nombreFichero);
         BufferedReader buffer = new BufferedReader(file);
-        //Lee las cabeceras
         String header= buffer.readLine();
 
         Table tabla = new Table();
 
+        //Pone los headers a la tabla
         List<String> headers = creadorHeaders(header);
         tabla.addHeader(headers);
-
+        //Crea los Rows
         List<Row> listaRow = new ArrayList<>();
         String cadena;
         while((cadena = buffer.readLine()) != null){
             Row linea = creadorRows(cadena);
             listaRow.add(linea);
         }
-
+        //Pone los rows en la tabla
         tabla.addRows(listaRow);
 
         return tabla;
 
     }
 
-    public Table readTableLabels(String nombreFichero) throws FileNotFoundException, IOException {
+    public TableWithLabels readTableLabels(String nombreFichero) throws FileNotFoundException, IOException {
         FileReader file = new FileReader(nombreFichero);
         BufferedReader buffer = new BufferedReader(file);
         //Lee las cabeceras
@@ -47,14 +48,14 @@ public class CSV {
         List<String> headers = creadorHeaders(header);
         tablaet.addHeader(headers);
 
-        List<Row> listaRow = new ArrayList<>();
+        List<RowWithLabel> listaRow = new ArrayList<>();
         String cadena;
         while((cadena = buffer.readLine()) != null){
-            Row linea = creadorRowsLabels(cadena, tablaet);
+            RowWithLabel linea = creadorRowsLabels(cadena, tablaet);
             listaRow.add(linea);
         }
 
-        tablaet.addRows(listaRow);
+        tablaet.addRowsLabels(listaRow);
 
         return tablaet;
     }
@@ -85,7 +86,10 @@ public class CSV {
             data.add(num);
         }
         String etiqueta = vectorDatos[vectorDatos.length - 1];
-        tablaet.creadorMapas(etiqueta);
+
+        int index = tablaet.creadorMapas(etiqueta);
+        data.add((double) index);
+
         RowWithLabel linea = new RowWithLabel(data);
         return linea;
     }

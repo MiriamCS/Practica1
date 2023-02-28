@@ -8,6 +8,8 @@ public class RowWithLabel extends Row{
 
     public RowWithLabel(List<Double> data) {
         super(data);
+        double num = data.get(data.size()-1);
+        numeroClase = (int) num;
     }
 
     public int getNumeroClase() {

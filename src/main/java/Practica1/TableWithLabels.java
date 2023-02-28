@@ -7,20 +7,27 @@ import java.util.Map;
 
 public class TableWithLabels extends Table{
 
-    public List<Row> listaRowsLabels;
-    private static Map<String, Integer> labelsToIndex;
+    public List<RowWithLabel> listaRowsLabels;
+    private Map<String, Integer> labelsToIndex;
 
     public TableWithLabels(){
+        listaRowsLabels = new ArrayList<>();
         labelsToIndex = new HashMap<>();
     }
 
-    public void addRows(List<Row> lista){
+    public void addRowsLabels(List<RowWithLabel> lista){
         listaRowsLabels = lista;
     }
 
-    public void creadorMapas(String etiqueta) {
-        if (!labelsToIndex.containsKey(etiqueta))
+    public int creadorMapas(String etiqueta) {
+        if (!labelsToIndex.containsKey(etiqueta)) {
             labelsToIndex.put(etiqueta, labelsToIndex.size());
+        }
+        return labelsToIndex.get(etiqueta);
+    }
+    @Override
+    public RowWithLabel getRowAt(int rowNumber){
+        return listaRowsLabels.get(rowNumber);
     }
 
 }
