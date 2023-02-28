@@ -8,14 +8,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CSV {
-    public CSV(String nombreFichero){
+    public CSV(){
         super();
-        this.nombreFichero = nombreFichero;
     }
-    private String nombreFichero;
-    public Table readTable() throws FileNotFoundException, IOException {
+    //Leer los datos del fichero
+    public Table readTable(String nombreFichero) throws FileNotFoundException, IOException {
         FileReader file = new FileReader(nombreFichero);
         BufferedReader buffer = new BufferedReader(file);
+        //Lee las cabeceras
         String header= buffer.readLine();
 
         Table tabla = new Table();
@@ -36,26 +36,27 @@ public class CSV {
 
     }
 
-    public Table readTableLabels() throws FileNotFoundException, IOException {
+    public Table readTableLabels(String nombreFichero) throws FileNotFoundException, IOException {
         FileReader file = new FileReader(nombreFichero);
         BufferedReader buffer = new BufferedReader(file);
+        //Lee las cabeceras
         String header= buffer.readLine();
-        List<String> headers = creadorHeaders(header);
-        headers.add("etiqueta");
-        List<Row> listaRowLabels = new ArrayList<>();
-        String cadena;
+
         TableWithLabels tablaet = new TableWithLabels();
 
+        List<String> headers = creadorHeaders(header);
         tablaet.addHeader(headers);
 
+        List<Row> listaRow = new ArrayList<>();
+        String cadena;
         while((cadena = buffer.readLine()) != null){
-            RowWithLabel linea = creadorRowsLabels(cadena, tablaet);
-            listaRowLabels.add(linea);
-
+            Row linea = creadorRowsLabels(cadena, tablaet);
+            listaRow.add(linea);
         }
 
-        return tablaet;
+        tablaet.addRows(listaRow);
 
+        return tablaet;
     }
     private List<String> creadorHeaders(String header){
         String[] vectorHeaders = header.split(",");

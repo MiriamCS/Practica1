@@ -16,7 +16,6 @@ public class TableWithLabels extends Table{
 
     public void addRows(List<Row> lista){
         listaRowsLabels = lista;
-        labelsToIndex = new HashMap<>();
     }
 
     public void creadorMapas(String etiqueta) {

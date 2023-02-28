@@ -16,8 +16,9 @@ class CSVTest {
 
     @org.junit.jupiter.api.Test
     void readTableLabels() throws IOException {
-        CSV csv1 = new CSV("C:\\Users\\al415634\\IdeaProjects\\Practica1\\src\\main\\java\\Practica1\\Iris");
-        Table tabla1 = csv1.readTableLabels();
+        CSV csv1 = new CSV();
+        // Table tabla1 = csv1.readTableLabels("C:\\Users\\al415634\\IdeaProjects\\Practica1\\src\\main\\java\\Practica1\\Iris");
+        Table tabla1 = csv1.readTableLabels("C:\\Users\\Miriam\\IdeaProjects\\Practica1\\src\\main\\java\\Practica1\\Iris");
         assertEquals(150, tabla1.listaRows.size());
         assertEquals(4,tabla1.headers.size());
 

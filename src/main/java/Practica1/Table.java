@@ -21,7 +21,4 @@ public class Table {
         return listaRows.get(rowNumber);
     }
 
-    public List<String> getHeaders(){
-        return headers;
-    }
 }
