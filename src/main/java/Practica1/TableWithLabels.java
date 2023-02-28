@@ -8,7 +8,7 @@ import java.util.Map;
 public class TableWithLabels extends Table{
 
     public List<RowWithLabel> listaRowsLabels;
-    private Map<String, Integer> labelsToIndex;
+    public Map<String, Integer> labelsToIndex;
 
     public TableWithLabels(){
         listaRowsLabels = new ArrayList<>();
