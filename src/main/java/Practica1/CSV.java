@@ -28,6 +28,27 @@ public class CSV {
         return tabla;
 
     }
+
+    public Table readTableLabels() throws FileNotFoundException, IOException {
+        FileReader file = new FileReader(nombreFichero);
+        BufferedReader buffer = new BufferedReader(file);
+        String header= buffer.readLine();
+        List<String> headers = creadorHeaders(header);
+        headers.add("etiqueta");
+        List<Row> listaRowLabels = new ArrayList<>();
+        String cadena;
+        while((cadena = buffer.readLine()) != null){
+            RowWithLabel linea = creadorRowsLabels(cadena);
+            listaRowLabels.add(linea);
+            ///REVISA ESTO
+            String etiqueta = linea[linea.])
+            tablaet.creadorMapas(etiqueta);
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        }
+        TableWithLabels tablaet = new TableWithLabels(headers, listaRowLabels);
+        return tablaet;
+
+    }
     private List<String> creadorHeaders(String header){
         String[] vectorHeaders = header.split(",");
         List<String> headers = new ArrayList<>();
@@ -44,9 +65,16 @@ public class CSV {
             Double num = Double.parseDouble(vectorDatos[j]);
             data.add(num);
         }
-        String etiqueta = vectorDatos[vectorDatos.length -1];
-        TableWithLabels.creadorMapas(etiqueta);
         Row linea = new Row(data);
+        return linea;
+    }
+    private RowWithLabel creadorRowsLabels(String cadena){
+        String[] vectorDatos  = cadena.split(",");
+        List<String> data = new ArrayList<>();
+        for(int j = 0; j<vectorDatos.length; j++){
+            data.add(vectorDatos[j]);
+        }
+        RowWithLabel linea = new RowWithLabel(data);
         return linea;
     }
 }

@@ -16,9 +16,18 @@ class CSVTest {
 
     @org.junit.jupiter.api.Test
     void readTable() throws IOException {
-        CSV csv1 = new CSV("Iris");
+        CSV csv1 = new CSV("C:\\Users\\al415634\\IdeaProjects\\Practica1\\src\\main\\java\\Practica1\\Iris");
         Table tabla1 = csv1.readTable();
         assertEquals(150, tabla1.listaRows.size());
         assertEquals(4,tabla1.headers.size());
+
+        assertTrue(tabla1.headers.get(0).equals("sepal length"));
+        assertTrue(tabla1.headers.get(1).equals("sepal width"));
+        assertTrue(tabla1.headers.get(2).equals("petal length"));
+        assertTrue(tabla1.headers.get(3).equals("petal width"));
+
+
+
+
     }
 }
