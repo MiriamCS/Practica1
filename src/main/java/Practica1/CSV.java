@@ -17,14 +17,21 @@ public class CSV {
         FileReader file = new FileReader(nombreFichero);
         BufferedReader buffer = new BufferedReader(file);
         String header= buffer.readLine();
+
+        Table tabla = new Table();
+
         List<String> headers = creadorHeaders(header);
+        tabla.addHeader(headers);
+
         List<Row> listaRow = new ArrayList<>();
         String cadena;
         while((cadena = buffer.readLine()) != null){
             Row linea = creadorRows(cadena);
             listaRow.add(linea);
         }
-        Table tabla = new Table(headers, listaRow);
+
+        tabla.addRows(listaRow);
+
         return tabla;
 
     }

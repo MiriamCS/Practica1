@@ -11,4 +11,7 @@ public class RowWithLabel extends Row{
         this.data= data;
     }
 
+    public int getNumeroClase() {
+        return numeroClase;
+    }
 }
