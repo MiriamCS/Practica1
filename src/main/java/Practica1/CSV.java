@@ -8,7 +8,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CSV {
-    public Table readTable(String nombreFichero) throws FileNotFoundException, IOException {
+    public CSV(String nombreFichero){
+        super();
+        this.nombreFichero = nombreFichero;
+    }
+    private String nombreFichero;
+    public Table readTable() throws FileNotFoundException, IOException {
         FileReader file = new FileReader(nombreFichero);
         BufferedReader buffer = new BufferedReader(file);
         String header= buffer.readLine();

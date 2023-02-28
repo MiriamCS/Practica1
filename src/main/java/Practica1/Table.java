@@ -2,8 +2,8 @@ package Practica1;
 
 import java.util.List;
 public class Table {
-    private List<String> headers;
-    private List<Row> listaRows;
+    public List<String> headers;
+    public List<Row> listaRows;
     public Table(List<String> headers, List<Row> listaRows){
         this.headers = headers;
         this.listaRows = listaRows;
