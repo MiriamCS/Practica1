@@ -44,15 +44,16 @@ public class CSV {
         headers.add("etiqueta");
         List<Row> listaRowLabels = new ArrayList<>();
         String cadena;
+        TableWithLabels tablaet = new TableWithLabels();
+
+        tablaet.addHeader(headers);
+
         while((cadena = buffer.readLine()) != null){
-            RowWithLabel linea = creadorRowsLabels(cadena);
+            RowWithLabel linea = creadorRowsLabels(cadena, tablaet);
             listaRowLabels.add(linea);
-            ///REVISA ESTO
-            String etiqueta = linea[linea.])
-            tablaet.creadorMapas(etiqueta);
-//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
         }
-        TableWithLabels tablaet = new TableWithLabels(headers, listaRowLabels);
+
         return tablaet;
 
     }
@@ -68,19 +69,22 @@ public class CSV {
     private Row creadorRows(String cadena){
         String[] vectorDatos  = cadena.split(",");
         List<Double> data = new ArrayList<>();
-        for(int j = 0; j<vectorDatos.length -1; j++){
+        for(int j = 0; j<vectorDatos.length; j++){
             Double num = Double.parseDouble(vectorDatos[j]);
             data.add(num);
         }
         Row linea = new Row(data);
         return linea;
     }
-    private RowWithLabel creadorRowsLabels(String cadena){
+    private RowWithLabel creadorRowsLabels(String cadena, TableWithLabels tablaet){
         String[] vectorDatos  = cadena.split(",");
-        List<String> data = new ArrayList<>();
-        for(int j = 0; j<vectorDatos.length; j++){
-            data.add(vectorDatos[j]);
+        List<Double> data = new ArrayList<>();
+        for(int j = 0; j<vectorDatos.length -1; j++){
+            Double num = Double.parseDouble(vectorDatos[j]);
+            data.add(num);
         }
+        String etiqueta = vectorDatos[vectorDatos.length - 1];
+        tablaet.creadorMapas(etiqueta);
         RowWithLabel linea = new RowWithLabel(data);
         return linea;
     }
