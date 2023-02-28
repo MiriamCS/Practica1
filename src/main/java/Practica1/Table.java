@@ -1,4 +1,4 @@
-package Practica1;
+//package Practica1;
 
 import java.util.List;
 public class Table {
@@ -7,6 +7,10 @@ public class Table {
     public Table(List<String> headers, List<Row> listaRows){
         this.headers = headers;
         this.listaRows = listaRows;
+    }
+    //Constructor vacio
+    public Table(){
+        super();
     }
 
     public Row getRowAt(int rowNumber){

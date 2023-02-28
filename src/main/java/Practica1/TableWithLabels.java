@@ -1,16 +1,17 @@
-package Practica1;
+//package Practica1;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class TableWithLabels extends Table{
-    private static Map<String, Integer> labelsToIndex;
-    public TableWithLabels(List<String> headers, List<Row> listaRows) {
-        super(headers, listaRows);
+    //atributos
+    private final Map<String, Integer> labelsToIndex;
+    //Constructor
+    public TableWithLabels (){
         labelsToIndex = new HashMap<>();
     }
-    public static void creadorMapas(String etiqueta){
+    public void creadorMapas(String etiqueta){
         if (!labelsToIndex.containsKey(etiqueta))
             labelsToIndex.put(etiqueta, labelsToIndex.size());
     }

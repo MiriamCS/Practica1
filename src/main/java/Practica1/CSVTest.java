@@ -1,4 +1,4 @@
-package Practica1;
+//package Practica1;
 
 import java.io.IOException;
 
@@ -16,9 +16,9 @@ class CSVTest {
 
     @org.junit.jupiter.api.Test
     void readTable() throws IOException {
-        CSV csv1 = new CSV("Iris");
-        Table tabla1 = csv1.readTable();
-        assertEquals(150, tabla1.listaRows.size());
-        assertEquals(4,tabla1.headers.size());
+        CSV csv = new CSV();
+        Table tabla = csv.readTable("C:\\Users\\al415673\\IdeaProjects\\Practica1\\src\\main\\java\\Practica1\\Iris.txt");
+        assertEquals(150, tabla.listaRows.size());
+        assertEquals(5,tabla.headers.size());
     }
 }
