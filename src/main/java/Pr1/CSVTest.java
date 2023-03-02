@@ -1,4 +1,4 @@
-package Practica1;
+package Pr1;
 
 import java.io.IOException;
 import java.util.ArrayList;
