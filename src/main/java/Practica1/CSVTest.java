@@ -51,10 +51,10 @@ class CSVTest {
         //Comprobar headers
         assertEquals(5, tabla1.headers.size());
 
-        assertTrue(tabla1.headers.get(0).equals("sepal length"));
-        assertTrue(tabla1.headers.get(1).equals("sepal width"));
-        assertTrue(tabla1.headers.get(2).equals("petal length"));
-        assertTrue(tabla1.headers.get(3).equals("petal width"));
+        assertEquals("sepal length", tabla1.headers.get(0));
+        assertEquals("sepal width", tabla1.headers.get(1));
+        assertEquals("petal length", tabla1.headers.get(2));
+        assertEquals("petal width", tabla1.headers.get(3));
 
         //El numero que se asigna a cada fila es correcto
         for(int i = 1; i<tabla1.listaRowsLabels.size(); i++){
