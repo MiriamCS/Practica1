@@ -1,36 +1,25 @@
 package Practica1;
 
 import java.util.List;
-import java.util.Map;
 
 public class KNN {
     //IMPLEMENTACIÓN DEL ALGORITMO KNN
     private List<RowWithLabel> listaRowsLabels;
-    //private Map<String, Integer> labelsToIndex;
 
     public void train(TableWithLabels data) {
         listaRowsLabels = data.listaRowsLabels;
-       //labelsToIndex = data.labelsToIndex;
     }
     public Integer estimate(List<Double> sample){
-        //Por cada row, conseguir data
-        //Comparar data con data sample mediante euclidea
-        //Guardar la euclidea menor
-        //Devolver el tipo de iris (index de etiqueta) de el row de euclidea menor
-        int closestIndex = -1;
-        double mayor = Double.POSITIVE_INFINITY;
-        double closestDistance = 2.6;
-
+        int closestIndex = -1; //Indica el indice más cercano
+        double menor = Double.POSITIVE_INFINITY; //Definimos un menor infinito para no dar distancia menor que la del mínimo
+        //recorrer los rows para encontrar la menor euclidea
         for (int i = 0; i < listaRowsLabels.size(); i++) {
             RowWithLabel rowWithLabel = listaRowsLabels.get(i);
 
             double d_euclidea = euclidea(sample, rowWithLabel);
-
-            if (d_euclidea < closestDistance) {
-                closestIndex = i;
-                closestDistance = d_euclidea;
-            }else if(d_euclidea<mayor){
-                mayor = d_euclidea;
+            //guardar el índice del menor euclidea
+            if(d_euclidea<menor){
+                menor = d_euclidea;
                 closestIndex = i;
             }
         }
