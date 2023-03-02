@@ -13,8 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class KNNTest {
 
     CSV csv1 = new CSV();
-    TableWithLabels tabla1 = csv1.readTableLabels("C:\\Users\\leiru\\Documents\\Universidad\\2nd año\\2nd semestre\\Programacion\\Practica1\\src\\main\\java\\Practica1\\Iris");
-    //TableWithLabels tabla1 = csv1.readTableLabels("C:\\Users\\leiru\\Documents\\Universidad\\2nd año\\2nd semestre\\Programacion\\Practica1\\src\\main\\java\\Practica1\\prueba2");
+    TableWithLabels tabla1 = csv1.readTableLabels("src/fichero/Iris");
     private final double[] s1 = {5.4,2.0,1.9,2.5}; //SAMPLE1
     private final double[] s2 = {4.5,3.0,4.8,1.2}; //SAMPLE1
     private final double[] s3 = {6.4,3.9,1.5,0.3}; //SAMPLE1
