@@ -2,9 +2,7 @@ package Practica1;
 
 
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 
 public class KMeans {
     private long seed;
@@ -20,20 +18,38 @@ public class KMeans {
     //public void train(TableWithLabels tabla){
     public void train(Table tabla){
         //Elegir aleatoriamente un semilla
-        Set<Integer> coleccion = new HashSet<>();
+        Set<Integer> representantes = new HashSet<>();
         int i=0;
         while (i<numClusters){
             Random random =new Random(seed);
             //int aleatorio = random.nextInt(0, tabla.listaRowsLabels.size());
             int aleatorio = random.nextInt(0, tabla.listaRows.size());
-            if(!coleccion.contains(aleatorio)){
+            if(!representantes.contains(aleatorio)){
                 System.out.println(aleatorio);
-                coleccion.add(aleatorio);
+                representantes.add(aleatorio);
                 i++;
                 seed++;
             }
         }
-
+    }
+    private List<List<Double>> obtenerDatos (Set representantes, Table tabla){
+        List<List<Double>> repre = new ArrayList<>();
+        for(Object elem : representantes){
+            Row aux = tabla.getRowAt(elem);
+            repre.add(aux.getData());
+        }
+        return repre;
+    }
+    public List<Double> asignacion (Set representantes, Table tabla){
+        List<List<Double>> repre = obtenerDatos(representantes, tabla);
+        KNN knn = new KNN();
+        int j=0;
+        while(j< repre.size()){
+            for(int i =0; i<tabla.listaRows.size(); i++){
+                knn.estimate(repre.get(j));
+            }
+            j++;
+        }
 
     }
 

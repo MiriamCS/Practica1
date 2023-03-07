@@ -12,6 +12,9 @@ public class KNN {
         listaRowsLabels = data.listaRowsLabels;
         labelsToIndex = data.labelsToIndex;
     }
+    public void train(Table data) {
+        listaRows = data.listaRows;///RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
+    }
     public Integer estimate(List<Double> sample){
         //Por cada row, conseguir data
         //Comparar data con data sample mediante euclidea

@@ -17,7 +17,7 @@ public class Table {
         headers = lista;
     }
 
-    public Row getRowAt(int rowNumber){
+    public Row getRowAt(Object rowNumber){
         return listaRows.get(rowNumber);
     }
 

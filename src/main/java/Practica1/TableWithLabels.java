@@ -26,8 +26,8 @@ public class TableWithLabels extends Table{
         return labelsToIndex.get(etiqueta);
     }
     @Override
-    public RowWithLabel getRowAt(int rowNumber){
-        return listaRowsLabels.get(rowNumber);
+    public RowWithLabel getRowAt(Object rowNumber){
+        return listaRowsLabels.get((Integer) rowNumber);
     }
 
 }
